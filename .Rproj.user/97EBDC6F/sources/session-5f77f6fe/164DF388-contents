@@ -1,0 +1,3 @@
+library(Rcpp)
+
+sourceCpp("/Users/kevinkvp/Desktop/Github Repo/ClusterZI/src/clusterZI.cpp")
