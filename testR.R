@@ -7,7 +7,11 @@ build()
 install()
 library(SimpLin)
 
-SimpLinR(x = 1:5, y = 1:5)
+?require
+install_github("skorsu/SimpLin", build_vignettes = TRUE)
+
+
+SimpLinR(x = 1:5, y = c(1, 2, 4, 7, "a"))
 SimpLinCpp(x = 1:5, y = 1:5)
 x = 1:5; y = 1:5 + 0.1
 summary(lm(y ~ x))

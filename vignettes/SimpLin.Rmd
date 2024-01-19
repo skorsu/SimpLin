@@ -1,0 +1,34 @@
+---
+title: "SimpLin: Simple Linear Regression in Rcpp"
+output: rmarkdown::pdf_document
+author: Suppapat (Kevin) Korsurat
+vignette: >
+  %\VignetteIndexEntry{SimpLin}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo=FALSE}
+library(SimpLin)
+```
+
+# Description
+
+# How to install
+
+```{r how_to_install, eval = FALSE}
+require(devtools)
+install_github("skorsu/SimpLin", build_vignettes = TRUE)
+library(SimpLin)
+```
+
+
+# Demo
+
