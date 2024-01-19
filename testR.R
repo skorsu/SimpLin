@@ -1,6 +1,24 @@
 library(Rcpp)
+library(devtools)
 
-sourceCpp("/Users/kevin-imac/Desktop/Github - Repo/SimpLin/src/main.cpp")
+uninstall()
+compileAttributes()
+build()
+install()
+library(SimpLin)
+
+SimpLinR(x = 1:5, y = 1:5)
+SimpLinCpp(x = 1:5, y = 1:5)
+x = 1:5; y = 1:5 + 0.1
+summary(lm(y ~ x))
+
+str(c(1, "a", 3))
+typeof(1:5) == "double"
+
+x <- c(1, "a")
+typeof(x)
+
+# sourceCpp("/Users/kevin-imac/Desktop/Github - Repo/SimpLin/src/main.cpp")
 
 x <- 1:10
 y <- 3 + (2*x) + rnorm(10)
