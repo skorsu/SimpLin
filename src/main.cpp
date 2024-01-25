@@ -22,6 +22,7 @@ Rcpp::List SimpLinCpp(arma::vec x, arma::vec y){
   
   // Calculate the standard error for the estimates
   double mse = arma::accu(arma::pow(r, 2))/(n - 2);
+  
   arma::mat SEMat = arma::sqrt(mse * invDesign);
   arma::vec coefSE = SEMat.diag();
   
