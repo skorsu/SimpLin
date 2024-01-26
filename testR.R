@@ -1,19 +1,30 @@
 library(Rcpp)
 library(devtools)
 
+devtools::load_all()
+
 uninstall()
 compileAttributes()
 build()
-install()
+install(build_vignettes = TRUE)
 library(SimpLin)
+browseVignettes()
 
-?require
 install_github("skorsu/SimpLin", build_vignettes = TRUE)
 
 
 SimpLinR(x = 1:5, y = c(1, 2, 4, 7, "a"))
-SimpLinCpp(x = 1:5, y = 1:5)
-x = 1:5; y = 1:5 + 0.1
+
+set.seed(1)
+x <- 1:10
+y <- x + rnorm(10)
+testResult <- SimpLinCpp(x, y)
+testResult$estimates
+testResult$
+rownames(testResult$estimates) <- c("b0", "b1")
+
+SimpLinR(x, y)
+
 summary(lm(y ~ x))
 
 str(c(1, "a", 3))

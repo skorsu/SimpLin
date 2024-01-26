@@ -21,7 +21,11 @@ library(SimpLin)
 
 # Description
 
+This package was built in order to implement simple linear regression via Rcpp and RcppArmadillo.
+
 # How to install
+
+This package was built and published on the author's Github. The best way to install this package is to use the `install_github` command from the `devtools` package.
 
 ```{r how_to_install, eval = FALSE}
 require(devtools)
@@ -31,4 +35,6 @@ library(SimpLin)
 
 
 # Demo
+
+# Troubleshooting
 
