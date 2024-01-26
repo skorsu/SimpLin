@@ -1,12 +1,12 @@
 Package: SimpLin
 Type: Package
-Title: What the package does (short line)
+Title: Simple Linear Regression with Rcpp/RcppArmadillo
 Version: 1.0
 Date: 2024-01-18
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Author: Kevin Korsurat
+Maintainer: Kevin Korsurat <kevin.korsurat@colostate.edu>
+Description: This package implements simple linear regression using Rcpp/RcppArmadillo with lower computational time compared to the base R command.
+License: MIT
 Imports: Rcpp (>= 1.0.11)
 LinkingTo: Rcpp, RcppArmadillo
 Suggests: 

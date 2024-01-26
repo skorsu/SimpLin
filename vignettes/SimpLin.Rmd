@@ -41,7 +41,8 @@ In this tutorial, we will apply simple linear regression to the iris dataset [@m
 
 ```{r}
 ### Import the data
-data("iris")
+data <- iris
+## OR use readRDS("iris.RData")
 ```
 
 This dataset contains 150 observations, consisting of three types of iris. We are interested in constructing a simple linear regression between the length of the sepal and the length of the petal. In other words, we would like to see if we can use the sepal's length to predict the petal's length. The statistical model is defined as $Y_{i} = \beta_{0} + \beta_{1}X_{i} + \epsilon_{i}$, where X is the sepal's length and Y is petal's length.
@@ -82,7 +83,6 @@ The forth and the fifth components are the residual and the predicted value. The
 ```{r}
 head(data.frame(residual = mod$residual, predicted = mod$predicted_val))
 ```
-
 
 # Troubleshooting
 
