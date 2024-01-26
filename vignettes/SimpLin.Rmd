@@ -1,7 +1,8 @@
 ---
 title: "SimpLin: Simple Linear Regression in Rcpp"
 output: rmarkdown::pdf_document
-author: Suppapat (Kevin) Korsurat
+author: Kevin Korsurat
+bibliography: "/Users/kevin-imac/Desktop/Github - Repo/SimpLin/ref.bibtex"
 vignette: >
   %\VignetteIndexEntry{SimpLin}
   %\VignetteEngine{knitr::rmarkdown}
@@ -25,16 +26,81 @@ This package was built in order to implement simple linear regression via Rcpp a
 
 # How to install
 
-This package was built and published on the author's Github. The best way to install this package is to use the `install_github` command from the `devtools` package.
+This package was built and published on the author's Github. The best way to install this package is to use the `install_github()` command from the `devtools` package.
 
 ```{r how_to_install, eval = FALSE}
+### Install the package
 require(devtools)
 install_github("skorsu/SimpLin", build_vignettes = TRUE)
 library(SimpLin)
 ```
 
+# Tutorial
 
-# Demo
+In this tutorial, we will apply simple linear regression to the iris dataset [@misc_iris_53]. This dataset is already in the R environment, and you can load it using the command below. Additionally, you can download this dataset from the author's GitHub.
+
+```{r}
+### Import the data
+data("iris")
+```
+
+This dataset contains 150 observations, consisting of three types of iris. We are interested in constructing a simple linear regression between the length of the sepal and the length of the petal. In other words, we would like to see if we can use the sepal's length to predict the petal's length. The statistical model is defined as $Y_{i} = \beta_{0} + \beta_{1}X_{i} + \epsilon_{i}$, where X is the sepal's length and Y is petal's length.
+
+You can fit the simple linear regression model mentioned earlier by using the command below.
+
+```{r}
+### Fit the simple linear regression
+mod <- SimpLinR(x = iris$Sepal.Length, y = iris$Petal.Length) 
+```
+
+Notice that `SimpLinR()` function takes two arguments: x and y. The first argument is x, which is the predictor, and the second argument is y, the response variable. 
+
+The result of `SimpLinR()` is a list object consisting of five components. The first component is the estimated regression coefficient. Below is the code to access it.
+
+```{r}
+mod$estimates
+```
+The result shows that the estimated regression is $\hat{Y}_{i} = -7.1014 + 1.8584X_{i}$.
+
+The second component is the standard error for the estimated coefficients. You can access these quantities using the code below.
+
+```{r}
+mod$SE
+```
+
+The result shows that the standard error for $\hat{\beta}_{0}$ is 0.5067 and the standard error for $\hat{\beta}_{0}$ is 0.0859.
+
+The third component is the 95% confidence interval for the regression coefficient. You can access it using the code below.
+
+```{r}
+mod$conf_int
+```
+The interpretation is that the 95% confidence interval for $\beta_{0}$ is (-8.1027, -6.1002), and the 95% confidence interval for $\beta_{1}$ is (1.6888, 2.0281).
+
+The forth and the fifth components are the residual and the predicted value. These two components are element-wise, meaning that each observation will have its own value. The code below will show how we can retrieve these quantities.
+
+```{r}
+head(data.frame(residual = mod$residual, predicted = mod$predicted_val))
+```
+
 
 # Troubleshooting
+
+The first error that you might encounter when using `SimpLinR()` is that the lengths of the two input vectors are different. This is the error you will see in this case.
+
+```{r, error=TRUE}
+SimpLinR(x = c(1), y = c(1, 2))
+```
+
+When you encounter this error, please check whether these two input vectors have the same length or not.
+
+The second error that you might see is related to the type of the input. Below is the error you will see when your inputs are not in the correct type.
+
+```{r, error=TRUE}
+SimpLinR(x = c(1, "1"), y = c(1, 2))
+```
+
+When you encounter this error, please make sure that all the elements in both vector x and vector y are numeric. 
+
+# Reference
 
